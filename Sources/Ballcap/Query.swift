@@ -7,6 +7,7 @@
 //
 //  Contact us https://twitter.com/1amageek
 
+import Foundation
 import FirebaseFirestore
 import FirebaseStorage
 
@@ -116,11 +117,11 @@ public extension DataSource {
             return Query(query.end(beforeDocument: beforeDocument), reference: self._originalQuery)
         }
 
-        public func listen(includeMetadataChanges: Bool = true, listener: @escaping FIRQuerySnapshotBlock) -> ListenerRegistration {
+        public func listen(includeMetadataChanges: Bool = true, listener: @escaping (QuerySnapshot?, Error?) -> Void) -> ListenerRegistration {
             return query.addSnapshotListener(includeMetadataChanges: includeMetadataChanges, listener: listener)
         }
 
-        public func get(completion: @escaping FIRQuerySnapshotBlock) {
+        public func get(completion: @escaping (QuerySnapshot?, Error?) -> Void) {
             query.getDocuments(completion: completion)
         }
     }

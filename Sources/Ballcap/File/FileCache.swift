@@ -6,6 +6,7 @@
 //  Copyright © 2019 Stamp Inc. All rights reserved.
 //
 
+import Foundation
 import FirebaseStorage
 
 internal final class FileCache {
