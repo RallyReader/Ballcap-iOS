@@ -7,7 +7,6 @@
 //
 
 import FirebaseFirestore
-import FirebaseFirestoreSwift
 
 public protocol DataRepresentable: AnyObject, Hashable {
 
