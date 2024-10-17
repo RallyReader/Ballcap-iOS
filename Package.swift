@@ -12,7 +12,7 @@ let package = Package(
             targets: ["Ballcap"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/firebase/firebase-ios-sdk.git", .upToNextMajor(from: "11.3.0"))
+        .package(url: "https://github.com/firebase/firebase-ios-sdk.git", .upToNextMajor(from: "10.10.0"))
     ],
     targets: [
         .target(
