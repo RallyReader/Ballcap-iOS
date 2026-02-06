@@ -231,29 +231,10 @@ public final class DataSource<T: Object & DataRepresentable>: ExpressibleByArray
                         }
                     }
                 case .removed:
-                    if documents.keys.contains(id) {
-                        if let retrieveBlock = retrieveBlock {
-                            group.enter()
-                            retrieveBlock(snapshot, change.document, { element in
-                                if let element = element {
-                                    if let index: Int = documents.keys.firstIndex(of: id) {
-                                        deletions.append(element)
-                                        documents.remove(at: index)
-                                    }
-                                }
-                                group.leave()
-                            })
-                        } else {
-                            do {
-                                let element: Element = try Element(snapshot: change.document)
-                                if let index: Int = documents.keys.firstIndex(of: id) {
-                                    deletions.append(element)
-                                    documents.remove(at: index)
-                                }
-                            } catch (let error) {
-                                print(error)
-                            }
-                        }
+                    if let index: Int = documents.keys.firstIndex(of: id) {
+                        let element = documents[index]
+                        deletions.append(element)
+                        documents.remove(at: index)
                     }
                 }
             }
